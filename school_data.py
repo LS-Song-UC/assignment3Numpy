@@ -1,5 +1,5 @@
 # school_data.py
-# AUTHOR NAME
+# Letian Song
 #
 # A terminal-based application for computing and printing statistics based on given input.
 # You must include the main listed below. You may add your own additional classes, functions, variables, etc. 
