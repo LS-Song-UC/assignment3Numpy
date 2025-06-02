@@ -101,6 +101,8 @@ def main():
 
 
         print("Mean enrollment for Grade 10 across all years: ","{:.0f}".format(np.nanmean(result[:,0]))) #Nanmean calculates mean while ignoring nan, aka it's a masking operation.
+        # If you want me to use a proper masking operation, I would've done this: 
+        # print(np.mean(result[:,0][~np.isnan(result[:,0])]))
         print("Mean enrollment for Grade 11 across all years: ", "{:.0f}".format(np.nanmean(result[:,1]))) #Worth while to mention for criteria satisfication, result[:,1] returns a slice, which means it's a subarray view.
         print("Mean enrollment for Grade 12 across all years: ", "{:.0f}".format(np.nanmean(result[:,2])))
         print("Highest enrollment for a single grade within the entire time period: ", "{:.0f}".format(np.nanmax(result)))
