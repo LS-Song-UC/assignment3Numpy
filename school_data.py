@@ -6,16 +6,17 @@
 # You may import any modules from the standard Python library.
 # Remember to include docstrings and comments.
 
-import pandas as pd
+#import pandas as pd
 import numpy as np
 import re
 from given_data import year_2013, year_2014, year_2015, year_2016, year_2017, year_2018, year_2019, year_2020, year_2021, year_2022
 
-df = pd.read_csv("Assignment3Data.csv") #Reads csv into data frame
-df = df.dropna(axis=1, how='all')#Removing empty spaces
-unique_school_names = df['School Name'].unique() #These two used Pandas because I need to retain their original indexing.
-unique_school_codes = df['School Code'].astype(str).unique()
-unique_school_year = np.array(sorted(set(df['School Year'])))# Years is fine because it is naturally ordered in ascending order when loaded.
+#df = pd.read_csv("Assignment3Data.csv") #Reads csv into data frame
+#df = df.dropna(axis=1, how='all')#Removing empty spaces
+#I decided to rework to a 'Pandasless' version. Next 3 lines are loading name/code/year information into 1-D arrays.
+unique_school_names = np.array(["Centennial High School","Robert Thirsk School","Louise Dean School","Queen Elizabeth High School","Forest Lawn High School","Crescent Heights High School","Western Canada High School","Central Memorial High School","James Fowler High School","Ernest Manning High School","William Aberhart High School","National Sport School","Henry Wise Wood High School","Bowness High School","Lord Beaverbrook High School","Jack James High School","Sir Winston Churchill High School","Dr. E. P. Scarlett High School","John G Diefenbaker High School","Lester B. Pearson High School"]) 
+unique_school_codes = np.array(["1224", "1679", "9626", "9806", "9813", "9815", "9816", "9823", "9825", "9826", "9829", "9830", "9836", "9847", "9850", "9856", "9857", "9858", "9860", "9865" ])
+unique_school_year = np.array([2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022])
 school_name_to_index = {name: i for i, name in enumerate(unique_school_names)} #Key value pairs generated for school_names where the value is their index in their respective unique collection.
 school_code_to_index = {str(code): i for i, code in enumerate(unique_school_codes)}
 school_year_to_index = {str(year): i for i, year in enumerate(unique_school_year)}
@@ -99,8 +100,8 @@ def main():
 
         """The rest are mostly just simply answering questions, nothing too notable."""
 
-
-        print("Mean enrollment for Grade 10 across all years: ","{:.0f}".format(np.nanmean(result[:,0]))) #Nanmean calculates mean while ignoring nan, aka it's a masking operation.
+        #Nanmean calculates mean while ignoring nan, aka it's a masking operation.
+        print("Mean enrollment for Grade 10 across all years: ","{:.0f}".format(np.nanmean(result[:,0]))) 
         # If you want me to use a proper masking operation, I would've done this: 
         # print(np.mean(result[:,0][~np.isnan(result[:,0])]))
         print("Mean enrollment for Grade 11 across all years: ", "{:.0f}".format(np.nanmean(result[:,1]))) #Worth while to mention for criteria satisfication, result[:,1] returns a slice, which means it's a subarray view.
